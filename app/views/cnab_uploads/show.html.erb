@@ -9,6 +9,52 @@
   </div>
 </div>
 
+<!-- Tabela para Exibir as Entradas -->
+<h2 style="text-align: center; margin-top: 30px;">Entradas do CNAB</h2>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Tipo de Transação</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Data</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Valor</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">CPF</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Cartão</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Hora</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Dono da Loja</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Nome da Loja</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cnab_entries.each do |entry| %>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.transaction_type_description ? entry.transaction_type_description : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.date.present? ? entry.date.strftime("%d/%m/%Y") : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.value.present? ? number_to_currency(entry.value / 100.0, unit: "R$ ", separator: ",", delimiter: ".") : "Valor não disponível" %>        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.cpf.present? ? entry.cpf : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.card.present? ? entry.card : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.time.present? ? entry.time.strftime("%H:%M:%S") : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.store_owner.present? ? entry.store_owner : "" %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= entry.store_name.present? ? entry.store_name : "" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <div style="text-align: center; margin-top: 15px;">
   <%= button_to "Excluir este upload", @cnab_upload, method: :delete, data: { confirm: "Tem certeza de que deseja excluir este upload?" }, class: "btn btn-delete" %>
 </div>

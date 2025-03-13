@@ -12,9 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :file_name, style: "display: block" %>
+    <%= form.label :file_name, "Nome do arquivo", style: "display: block" %>
     <%= form.text_field :file_name %>
   </div>
+
+  <% if cnab_upload.new_record? %>
+    <div>
+      <%= form.label :file, "Escolha o arquivo (somente .txt)", style: "display: block" %>
+      <%= form.file_field :file, accept: '.txt' %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit "Salvar", class: "submit-btn" %>
