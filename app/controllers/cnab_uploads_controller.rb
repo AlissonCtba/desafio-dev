@@ -25,11 +25,22 @@ class CnabUploadsController < ApplicationController
     @cnab_upload = CnabUpload.new(cnab_upload_params)
 
     respond_to do |format|
-      if @cnab_upload.save        
-        # Colocar no SIDEKIQ
-        process_cnab_file(params[:cnab_upload][:file], @cnab_upload.id) if params[:cnab_upload][:file].present?
+      if @cnab_upload.save
+        # Salvando o arquivo temporariamente no disco
+        file = params[:cnab_upload][:file]
+        random_name = "#{SecureRandom.hex(10)}.#{file.original_filename.split('.').last}"
+        tmp_file = Rails.root.join('tmp', 'uploads', random_name)
+        
+        # Certificando-se de que o diretório existe
+        FileUtils.mkdir_p(File.dirname(tmp_file))
 
-        format.html { redirect_to @cnab_upload, notice: "Cnab upload was successfully created." }
+        File.open(tmp_file, 'wb') do |f|
+          f.write(file.read)
+        end
+
+        ImportCnabJob.perform_later(tmp_file.to_s, @cnab_upload.id)
+
+        format.html { redirect_to @cnab_upload, notice: "A importação continuará em segundo plano! Logo será possível visualizar os dados importados!" }
         format.json { render :show, status: :created, location: @cnab_upload }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -70,33 +81,5 @@ class CnabUploadsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def cnab_upload_params
       params.require(:cnab_upload).permit(:file_name, :created_at)
-    end
-
-    def process_cnab_file(uploaded_file, cnab_upload_id)
-      file_content = uploaded_file.read
-  
-      file_content.each_line do |line|
-        # Extrai os dados de cada linha com base nas posições definidas
-        transaction_type_id = line[0, 1]        # Tipo da transação
-        date = line[1, 8]                       # Data da ocorrência
-        value = line[9, 10].to_i / 100.0        # Valor da movimentação (divido por 100 para normalizar)
-        cpf = line[19, 11]                      # CPF do beneficiário
-        card = line[30, 12]                     # Cartão utilizado
-        hour = line[42, 6]                      # Hora da ocorrência
-        store_owner = line[48, 14].strip        # Dono da loja (nome do representante)
-        store_name = line[62, 19].strip         # Nome da loja
-  
-        CnabEntry.create!(
-          cnab_upload_id: cnab_upload_id,
-          transaction_type_id: transaction_type_id.to_i, 
-          date: Date.parse(date),
-          value: value,
-          cpf: cpf.strip,
-          card: card.strip,
-          time: hour.strip,
-          store_owner: store_owner,
-          store_name: store_name
-        )
-      end
     end
 end
