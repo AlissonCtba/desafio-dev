@@ -152,3 +152,246 @@ p {
 }
 /* Estilos para a Home */
   
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-show {
+    background-color: #27ae60;
+}
+
+.btn-show:hover {
+    background-color: #2ecc71;
+}
+
+.btn-new {
+    background-color: #f39c12;
+}
+
+.btn-new:hover {
+    background-color: #e67e22;
+}
+
+/* Estilos gerais para o formulário */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para as mensagens de erro */
+div[style="color: red"] {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+div[style="color: red"] h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+div[style="color: red"] ul {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+div[style="color: red"] li {
+    font-size: 14px;
+}
+
+/* Estilos dos campos de entrada */
+div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estilo do botão de envio */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo dos links */
+.link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Centralização dos links */
+div[style="text-align: center; margin-top: 20px;"] {
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Estilo para os links de navegação */
+  .navigation-links {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .navigation-links a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px;
+  }
+  
+  .navigation-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Formulário renderizado (assumindo que ele tem o mesmo estilo do anterior) */
+  form {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  div[style="color: red"] {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  div[style="color: red"] h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  div[style="color: red"] ul {
+    padding-left: 20px;
+    list-style-type: square;
+  }
+  
+  div[style="color: red"] li {
+    font-size: 14px;
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="datetime-local"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]:focus,
+  input[type="datetime-local"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }

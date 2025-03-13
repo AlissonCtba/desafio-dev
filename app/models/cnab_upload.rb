@@ -1,0 +1,2 @@
+class CnabUpload < ApplicationRecord
+end

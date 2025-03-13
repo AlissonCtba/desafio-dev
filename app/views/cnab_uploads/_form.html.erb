@@ -1,0 +1,22 @@
+<%= form_with(model: cnab_upload) do |form| %>
+  <% if cnab_upload.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cnab_upload.errors.count, "erro") %> impediu que o upload do CNAB fosse salvo:</h2>
+
+      <ul>
+        <% cnab_upload.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :file_name, style: "display: block" %>
+    <%= form.text_field :file_name %>
+  </div>
+
+  <div>
+    <%= form.submit "Salvar", class: "submit-btn" %>
+  </div>
+<% end %>

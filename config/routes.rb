@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cnab_uploads
   get 'home/index'
   devise_for :users
   root to: 'home#index' # ou a página que você quiser
