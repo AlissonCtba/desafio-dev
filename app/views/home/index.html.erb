@@ -1,0 +1,19 @@
+<div class="home-container">
+  <div class="info-box">
+    <h1>Bem-vindo ao Sistema de Processamento CNAB</h1>
+    <p>
+      Este sistema foi desenvolvido para ler arquivos <b>CNAB</b> (Centro Nacional de Automação Bancária), 
+      processar suas informações e salvar as transações financeiras em um banco de dados. O objetivo é 
+      automatizar a extração e organização de dados bancários de maneira eficiente e segura, facilitando 
+      o controle financeiro das empresas.
+    </p>
+    <p>
+      Para começar, entre ou faça seu cadastro!
+    </p>
+
+    <div class="auth-buttons">
+      <%= link_to 'Entrar', new_user_session_path, class: 'btn-login' %>
+      <%= link_to 'Cadastre-se', new_user_registration_path, class: 'btn-register' %>
+    </div>
+  </div>
+</div>
