@@ -185,13 +185,17 @@ p {
     background-color: #e67e22;
 }
 
+.auth-container form {
+    box-shadow: none;
+    border: none;
+}
+
 /* Estilos gerais para o formulário */
 form {
-    width: 100%;
     max-width: 500px;
     margin: 30px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
@@ -309,18 +313,6 @@ h1 {
     text-decoration: underline;
   }
   
-  /* Formulário renderizado (assumindo que ele tem o mesmo estilo do anterior) */
-  form {
-    width: 100%;
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
   div[style="color: red"] {
     background-color: #f8d7da;
     color: #721c24;
@@ -394,4 +386,21 @@ h1 {
   
   .link:hover {
     text-decoration: underline;
+  }
+
+  .container {
+    width: 90%; /* Largura do container como porcentagem da tela */
+    max-width: 1200px; /* Largura máxima do container, isso evita que ele ocupe toda a tela em telas grandes */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 20px; /* Espaçamento interno para não grudar nas bordas */
+    box-sizing: border-box; /* Inclui padding na largura total */
+  }
+
+  /* removendo estilo dos forms criados por botões */
+  .button_to {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: auto !important;
+    padding: 0 !important;
   }

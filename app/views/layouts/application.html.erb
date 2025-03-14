@@ -24,7 +24,7 @@
           <%= link_to "Lojas", '/stores', style: "color: white; text-decoration: none; margin-left: 20px;" %>
         </div>
         <div>
-          <%= link_to "Sair", destroy_user_session_path, method: :delete, style: "color: white; text-decoration: none; font-weight: bold;" %>
+          <%= button_to "Sair", destroy_user_session_path, method: :delete, data: { confirm: "Tem certeza de que deseja deslogar?" }, class: "btn btn-delete" %>
         </div>
       </nav>
     <% end %>

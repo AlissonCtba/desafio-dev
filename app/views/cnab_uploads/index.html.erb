@@ -1,17 +1,30 @@
 <h1 style="text-align: center; font-size: 2em; margin-bottom: 20px;">CNAB Uploads</h1>
 
-<div id="cnab_uploads" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-  <% @cnab_uploads.each do |cnab_upload| %>
-    <div class="cnab-box" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-      <h3 style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Arquivo: <%= cnab_upload.file_name %></h3>
-      <p><strong>Data de Upload:</strong> <%= cnab_upload.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+<table style="width: 100%; border-collapse: collapse; margin: 0 auto;">
+  <thead>
+    <tr>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">Arquivo</th>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">Data de Upload</th>
+      <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cnab_uploads.each do |cnab_upload| %>
+      <tr>
+        <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+          <%= cnab_upload.file_name %>
+        </td>
+        <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+          <%= cnab_upload.created_at.strftime("%d/%m/%Y %H:%M") %>
+        </td>
+        <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+          <%= link_to "Mostrar detalhes", cnab_upload, class: "btn btn-show" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-      <div style="text-align: center; margin-top: 15px;">
-        <%= link_to "Mostrar detalhes", cnab_upload, class: "btn btn-show" %>
-      </div>
-    </div>
-  <% end %>
-</div>
 
 <div style="text-align: center; margin-top: 30px;">
   <%= link_to "Novo Upload de CNAB", new_cnab_upload_path, class: "btn btn-new" %>
