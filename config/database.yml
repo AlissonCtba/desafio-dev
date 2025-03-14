@@ -11,18 +11,15 @@ default: &default
   timeout: 5000
   username: development
   password: development
+  host: db
 
 development:
   <<: *default
   database: suite_development
-  username: development
-  password: development
 
 test:
   <<: *default
   database: suite_test
-  username: development
-  password: development
 
 production:
   <<: *default
