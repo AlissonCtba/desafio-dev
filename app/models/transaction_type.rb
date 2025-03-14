@@ -15,4 +15,9 @@ class TransactionType
     type = TYPES.find { |t| t[:id] == id }
     type ? type[:description] : nil
   end
+
+  def self.signal_by_id(id)
+    type = TYPES.find { |t| t[:id] == id }
+    type ? type[:signal] : nil
+  end
 end

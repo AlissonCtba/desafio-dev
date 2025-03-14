@@ -1,0 +1,17 @@
+<h1 style="text-align: center; font-size: 2em; margin-bottom: 20px;">Lojas</h1>
+
+<div id="cnab_uploads" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+  <% @stores.each do |store| %>
+    <div class="cnab-box" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+      <h3 style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Arquivo: <%= store.name %></h3>
+      <p><strong>Data de Upload:</strong> <%= store.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+
+      <div style="text-align: center; margin-top: 15px;">
+        <%= link_to "Mostrar detalhes", store, class: "btn btn-show" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+</div>

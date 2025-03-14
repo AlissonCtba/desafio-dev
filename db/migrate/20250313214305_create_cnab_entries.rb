@@ -8,8 +8,7 @@ class CreateCnabEntries < ActiveRecord::Migration[6.0]
       t.string :cpf, limit: 11
       t.string :card, limit: 12
       t.time :time
-      t.string :store_owner, limit: 14
-      t.string :store_name, limit: 19
+      t.integer :store_id
       
       t.timestamps
       t.datetime :deleted_at

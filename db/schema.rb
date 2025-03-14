@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_13_214305) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_13_234955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,8 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_214305) do
     t.string "cpf", limit: 11
     t.string "card", limit: 12
     t.time "time"
-    t.string "store_owner", limit: 14
-    t.string "store_name", limit: 19
+    t.integer "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at", precision: nil
@@ -31,6 +30,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_13_214305) do
 
   create_table "cnab_uploads", force: :cascade do |t|
     t.string "file_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string "name"
+    t.string "owner"
+    t.decimal "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

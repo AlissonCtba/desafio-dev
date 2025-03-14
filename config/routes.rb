@@ -2,7 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :cnab_uploads
-  resources :cnab_entry, only: [:index]
+  resources :cnab_entries, only: [:index]
+  resources :stores, only: [:index, :show]
   get 'home/index'
   devise_for :users
   root to: 'home#index' # ou a página que você quiser

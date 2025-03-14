@@ -15,6 +15,24 @@ class CnabUpload < ApplicationRecord
       store_owner = line[48, 14].strip        # Dono da loja (nome do representante)
       store_name = line[62, 19].strip         # Nome da loja
 
+      store = Store.find_by_name(store_name)
+      if store.blank?
+        store = Store.new
+        store.name = store_name
+        store.balance = 0
+      end
+
+      store.owner = store_owner
+
+      signal = TransactionType.signal_by_id(transaction_type_id.to_i)
+      if signal == "+"
+        store.balance += value
+      elsif signal == "-"
+        store.balance -= value
+      end
+
+      store.save!
+
       CnabEntry.create!(
         cnab_upload_id: self.id,
         transaction_type_id: transaction_type_id.to_i, 
@@ -23,8 +41,7 @@ class CnabUpload < ApplicationRecord
         cpf: cpf.strip,
         card: card.strip,
         time: hour.strip,
-        store_owner: store_owner,
-        store_name: store_name
+        store_id: store.id
       )
     end
   end

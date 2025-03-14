@@ -1,9 +1,9 @@
-<h1 style="text-align: center; font-size: 2em; margin-bottom: 20px;">Detalhes do Upload de CNAB</h1>
+<h1 style="text-align: center; font-size: 2em; margin-bottom: 20px;">Detalhes da loja</h1>
 
 <div id="cnab_uploads" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
   <div class="cnab-box" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    <h3 style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Arquivo: <%= @cnab_upload.file_name %></h3>
-    <p><strong>Data de Upload:</strong> <%= @cnab_upload.created_at.strftime("%d/%m/%Y %H:%M") %></p>
+    <h3 style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Loja: <%= @store.name %></h3>
+    <h3 style="text-align: center; font-size: 1.2em; margin-bottom: 10px;">Dono: <%= @store.owner %></h3>
   </div>
 </div>
 
@@ -18,8 +18,8 @@
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">CPF</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Cartão</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Hora</th>
-      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Dono da Loja</th>
-      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Nome da Loja</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Arquivo</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Upload do arquivo</th>
     </tr>
   </thead>
   <tbody>
@@ -43,19 +43,15 @@
           <%= entry.time.present? ? entry.time.strftime("%H:%M:%S") : "" %>
         </td>
         <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-          <%= entry.store&.owner.present? ? entry.store.owner : "" %>
+          <%= entry.cnab_upload.file_name.present? ? entry.cnab_upload.file_name : "" %>
         </td>
         <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-          <%= entry.store&.name.present? ? entry.store.name : "" %>
+          <%= entry.cnab_upload.created_at.present? ? entry.cnab_upload.created_at.strftime("%d/%m/%Y %H:%M") : "" %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<div style="text-align: center; margin-top: 15px;">
-  <%= button_to "Excluir este upload", @cnab_upload, method: :delete, data: { confirm: "Tem certeza de que deseja excluir este upload?" }, class: "btn btn-delete" %>
-</div>
 
 <div class="navigation-links">
   <%= link_to "Voltar para os uploads de CNAB", cnab_uploads_path %>
