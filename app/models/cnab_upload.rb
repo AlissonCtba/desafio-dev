@@ -1,6 +1,8 @@
 class CnabUpload < ApplicationRecord
   has_many :cnab_entries
 
+  validates :file_name, presence: true
+
   def process_cnab_file(file)
     file_content = file.read
 

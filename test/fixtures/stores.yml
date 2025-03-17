@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  saldo: 9.99
+  id: 1
+  name: Loja 1
+  balance: 9.99
 
 two:
-  nome: MyString
-  saldo: 9.99
+  id: 2
+  name: Loja 2
+  balance: 9.99
