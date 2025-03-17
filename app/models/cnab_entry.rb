@@ -9,4 +9,8 @@ class CnabEntry < ApplicationRecord
   def transaction_type_description
     TransactionType.description_by_id(self.transaction_type_id)
   end
+
+  def transaction_type_signal
+    TransactionType.signal_by_id(self.transaction_type_id)
+  end
 end

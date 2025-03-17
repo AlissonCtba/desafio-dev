@@ -20,4 +20,12 @@ class TransactionType
     type = TYPES.find { |t| t[:id] == id }
     type ? type[:signal] : nil
   end
+
+  def self.ids_with_positive_signal
+    TYPES.select { |t| t[:signal] == '+' }.map { |t| t[:id] }
+  end
+
+  def self.ids_with_negative_signal
+    TYPES.select { |t| t[:signal] == '-' }.map { |t| t[:id] }
+  end
 end

@@ -3,9 +3,9 @@
 one:
   id: 1
   name: Loja 1
-  balance: 9.99
+  balance: 0
 
 two:
   id: 2
   name: Loja 2
-  balance: 9.99
+  balance: 0

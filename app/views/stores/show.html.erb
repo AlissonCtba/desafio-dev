@@ -14,7 +14,8 @@
     <tr>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Tipo de Transação</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Data</th>
-      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Valor</th>
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Valor entrada</th>      
+      <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Valor saída</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">CPF</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Cartão</th>
       <th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Hora</th>
@@ -32,7 +33,23 @@
           <%= entry.date.present? ? entry.date.strftime("%d/%m/%Y") : "" %>
         </td>
         <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-          <%= entry.value.present? ? number_to_currency(entry.value, unit: "R$ ", separator: ",", delimiter: ".") : "Valor não disponível" %>        </td>
+          <%= 
+            if entry.value.present? && entry.transaction_type_signal == "+"
+              number_to_currency(entry.value, unit: "R$ ", separator: ",", delimiter: ".") 
+            else
+              ""
+            end
+          %>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <%= 
+            if entry.value.present? && entry.transaction_type_signal == "-"
+              number_to_currency(entry.value, unit: "R$ ", separator: ",", delimiter: ".") 
+            else
+              ""
+            end
+          %>        
+        </td>
         <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
           <%= entry.cpf.present? ? entry.cpf : "" %>
         </td>
@@ -50,6 +67,21 @@
         </td>
       </tr>
     <% end %>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;" colspan="2">
+          <b>Totais:</b>
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <b><%= number_to_currency(@store.sum_incoming_transactions, unit: "R$ ", separator: ",", delimiter: ".") %></b>    
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
+          <b><%= number_to_currency(@store.sum_outgoing_transactions, unit: "R$ ", separator: ",", delimiter: ".") %></b>    
+        </td>
+        <td style="border: 1px solid #ddd; padding: 10px; text-align: center;" colspan="5">
+          <b>Saldo em conta: <%= number_to_currency(@store.balance, unit: "R$ ", separator: ",", delimiter: ".") %>
+          </b>
+        </td>
+      </tr>
   </tbody>
 </table>
 

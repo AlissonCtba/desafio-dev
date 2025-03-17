@@ -5,4 +5,4 @@ pt-BR:
         cnab_upload:
           attributes:
             file_name:
-              blank: "File name cannot be blank!"
+              blank: "O nome do arquivo não pode ficar em branco!"
