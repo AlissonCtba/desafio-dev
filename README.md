@@ -20,8 +20,8 @@ Este é um projeto desenvolvido como parte do desafio para a vaga de desenvolved
 Clone este repositório em seu ambiente local:
 
 ```bash
-git clone https://github.com/AlissonCtba/dev-challenge.git
-cd dev-challenge
+git clone https://github.com/AlissonCtba/desafio-dev
+cd desafio-dev
 ```
 
 ### Passo 2: Configuração do Docker
