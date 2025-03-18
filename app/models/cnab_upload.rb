@@ -3,6 +3,12 @@ class CnabUpload < ApplicationRecord
 
   validates :file_name, presence: true
 
+  before_destroy :destroy_cnab_entries
+
+  def destroy_cnab_entries
+    self.cnab_entries.destroy_all
+  end
+
   def process_cnab_file(file)
     file_content = file.read
 
