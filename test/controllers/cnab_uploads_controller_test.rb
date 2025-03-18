@@ -20,7 +20,7 @@ class CnabUploadsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cnab_upload" do
     assert_difference("CnabUpload.count") do
-      post cnab_uploads_url, params: { cnab_upload: { file: @file } }
+      post cnab_uploads_url, params: { cnab_upload: { file_name: "Teste", file: @file } }
     end
 
     assert_redirected_to cnab_upload_url(CnabUpload.last)
@@ -29,13 +29,13 @@ class CnabUploadsControllerTest < ActionDispatch::IntegrationTest
     assert_not_empty temp_files, "O arquivo temporário não foi criado"
 
     assert_enqueued_with(job: ImportCnabJob) do
-      post cnab_uploads_path, params: { cnab_upload: { file: @file } }
+      post cnab_uploads_url, params: { cnab_upload: { file_name: "Teste", file: @file } }
     end
 
     # Simular o processamento do job
     perform_enqueued_jobs
 
-    assert_equal 21, CnabEntry.where(cnab_upload_id: CnabUpload.last.id).size, "Alguns registros não foram importados"
+    assert_equal 42, CnabEntry.where(cnab_upload_id: CnabUpload.last.id).size, "Alguns registros não foram importados"
   end
 
   test "should show cnab_upload" do

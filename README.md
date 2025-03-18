@@ -50,6 +50,7 @@ Uma vez que os containers estão em execução, execute a migração do banco de
 ```bash
 docker-compose exec web rails db:create
 docker-compose exec web rails db:migrate
+docker-compose exec web rails db:fixtures:load # Carrega dados das fixtures (opcional)
 ```
 
 ### Passo 5: Iniciar o servidor
@@ -57,3 +58,9 @@ docker-compose exec web rails db:migrate
 Depois de configurar o banco de dados, o servidor Rails estará pronto para ser iniciado. Se você estiver utilizando Docker, o servidor será iniciado automaticamente ao rodar o `docker-compose up`.
 
 O servidor estará disponível no navegador em: http://localhost:3000
+
+### Passo 6: Acessando a aplicação
+
+Ao acessar a URL da aplicação, você terá a opção de fazer login. Caso os dados das fixtures tenham sido importados corretamente, é possível realizar o login utilizando o e-mail: teste@desafio-dev.com e a senha: qwerty.
+
+Logado na aplicação, você poderá importar arquivos CNAB e visualizar as movimentações por loja.

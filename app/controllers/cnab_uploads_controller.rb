@@ -3,7 +3,7 @@ class CnabUploadsController < ApplicationController
 
   # GET /cnab_uploads or /cnab_uploads.json
   def index
-    @cnab_uploads = CnabUpload.all
+    @cnab_uploads = CnabUpload.order(id: :desc).all
   end
 
   # GET /cnab_uploads/1 or /cnab_uploads/1.json
@@ -30,7 +30,7 @@ class CnabUploadsController < ApplicationController
         file = params[:cnab_upload][:file]
         random_name = "#{SecureRandom.hex(10)}.#{file.original_filename.split('.').last}"
         tmp_file = Rails.root.join('tmp', 'uploads', random_name)
-        
+
         # Certificando-se de que o diretório existe
         FileUtils.mkdir_p(File.dirname(tmp_file))
 

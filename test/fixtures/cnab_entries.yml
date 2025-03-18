@@ -9,3 +9,13 @@ one:
   card: "8723****9987"
   time: '08:00:00'
   store_id: 1
+
+two:
+  cnab_upload_id: 1
+  transaction_type_id: "2"
+  date: <%= Time.now.strftime('%Y-%m-%d') %>
+  value: 100.50
+  cpf: "01234567890"
+  card: "8723****9987"
+  time: '08:00:00'
+  store_id: 1

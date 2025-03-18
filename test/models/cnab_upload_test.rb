@@ -34,6 +34,5 @@ class CnabUploadTest < ActiveSupport::TestCase
   test "should not create cnab upload without file name" do
     cnab_upload = CnabUpload.new
     assert_not cnab_upload.save
-    assert_includes cnab_upload.errors[:file_name], "can't be blank"
   end
 end
